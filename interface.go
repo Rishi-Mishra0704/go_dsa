@@ -1,10 +1,9 @@
 package main
 
-
-type LinkedListOps[T any] interface {
-	InsertAtBeginning(value T)
-	InsertAtEnd(value T)
-	Delete(value T) bool
+type LinkedListOps interface {
+	InsertAtBeginning(value int)
+	InsertAtEnd(value int)
+	Delete(value int) bool
 	PrintListForward()
 	PrintListBackward()
 }

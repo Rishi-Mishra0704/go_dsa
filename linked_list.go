@@ -1,23 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Node represents a node in the linked list
 
 // Node represents a node in the singly linked list
-type Node[T any] struct {
-	value T
-	next  *Node[T]
+type Node struct {
+	value int
+	next  *Node
 }
 
 // LinkedList represents a singly linked list
-type LinkedList[T any] struct {
-	head *Node[T]
+type LinkedList struct {
+	head *Node
 }
 
 // InsertAtBeginning inserts a new node at the beginning of the singly linked list
-func (ll *LinkedList[T]) InsertAtBeginning(value T) {
-	newNode := &Node[T]{
+func (ll *LinkedList) InsertAtBeginning(value int) {
+	newNode := &Node{
 		value: value,
 		next:  ll.head,
 	}
@@ -25,8 +27,8 @@ func (ll *LinkedList[T]) InsertAtBeginning(value T) {
 }
 
 // InsertAtEnd inserts a new node at the end of the singly linked list
-func (ll *LinkedList[T]) InsertAtEnd(value T) {
-	newNode := &Node[T]{value: value}
+func (ll *LinkedList) InsertAtEnd(value int) {
+	newNode := &Node{value: value}
 
 	if ll.head == nil {
 		ll.head = newNode
@@ -41,7 +43,7 @@ func (ll *LinkedList[T]) InsertAtEnd(value T) {
 }
 
 // Delete removes the node with the specified value
-func (ll *LinkedList[T]) Delete(value T) bool {
+func (ll *LinkedList) Delete(value int) bool {
 	if ll.head == nil {
 		return false // List is empty
 	}
@@ -66,7 +68,7 @@ func (ll *LinkedList[T]) Delete(value T) bool {
 }
 
 // PrintListForward prints all the values in the linked list (singly list, only forward)
-func (ll *LinkedList[T]) PrintListForward() {
+func (ll *LinkedList) PrintListForward() {
 	current := ll.head
 	for current != nil {
 		fmt.Printf("%v -> ", current.value)
@@ -76,6 +78,6 @@ func (ll *LinkedList[T]) PrintListForward() {
 }
 
 // PrintListBackward is not applicable to singly linked lists
-func (ll *LinkedList[T]) PrintListBackward() {
+func (ll *LinkedList) PrintListBackward() {
 	fmt.Println("PrintListBackward not supported in singly linked list.")
 }
